@@ -21,24 +21,22 @@ Things you may want to cover:
 
 - Deployment instructions
 
-- ...Pet Health Diary
+- ... #テーブル設計
 
-  ## テーブル設計
-
-  ## users テーブル
+## users テーブル
 
 | Column | Type | Options |
 | id | integer | null: false, primary key |
-| name | string | null: false |
+| name | string | null: false |  
 | email | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 
 ### Association
 
-has_many :pets
-has_many :articles
-has_many :favorites
-has_many :reminders
+-has_many :pets
+-has_many :articles
+-has_many :favorites
+-has_many :reminders
 
 ## pets テーブル
 
@@ -53,9 +51,9 @@ has_many :reminders
 
 ### Association
 
-belongs_to :user
-has_many :daily_logs
-has_many :health_checks
+-belongs_to :user
+-has_many :daily_logs
+-has_many :health_checks
 
 ## daily_logs テーブル
 
@@ -70,56 +68,56 @@ has_many :health_checks
 
 ### Association
 
-belongs_to :pet
+-belongs_to :pet
 
 ## health_checks テーブル
 
-Column Type Options
-id integer null: false, primary key
-pet_id integer null: false, foreign_key: true
-date date null: false
-description text
-image string
+|Column | Type | Option |
+|id | integer | null: false,primary key |
+|pet_id | integer | null: false,foreign_key: true |
+|date | date | null: false |
+|description | text | |
+|image | string | |
 
 ### Association
 
-belongs_to :pet
+-belongs_to :pet
 
 ## articles テーブル
 
-Column Type Options
-id integer null: false, primary key
-user_id integer null: false, foreign_key: true
-title string null: false
-content text null: false
-category string
+| Column | Type | Options |
+| id | integer | null: false, primary key |
+| user_id | integer | null: false, foreign_key: true |
+| title | string | null: false |
+| content | text | null: false |
+| category | string | |
 
 ### Association
 
-belongs_to :user
-has_many :favorites
+-belongs_to :user
+-has_many :favorites
 
 ## favorites テーブル
 
-Column Type Options
-id integer null: false, primary key
-user_id integer null: false, foreign_key: true
-article_id integer null: false, foreign_key: true
+|Column | Type | Options |
+|id | integer | null: false, primary key |
+|user_id | integer | null: false, foreign_key: true |
+|article_id | integer | null: false, foreign_key: true |
 
 ### Association
 
-belongs_to :user
-belongs_to :article
+-belongs_to :user
+-belongs_to :article
 
 ## reminders テーブル
 
-Column Type Options
-id integer null: false, primary key
-user_id integer null: false, foreign_key: true
-title string null: false
-description text
-reminder_date date null: false
+|Column Type Options
+|id |integer | null: false, primary key |
+|user_id |integer | null: false, foreign_key: true |
+|title |string | null: false |
+|description |text | |
+|reminder_date |date | null: false |
 
 ### Association
 
-belongs_to :user
+-belongs_to :user
