@@ -47,7 +47,6 @@ Things you may want to cover:
 | age | integer | null: false |
 | weight | integer | |
 | gender | string | |
-| hospital | string | |
 
 ### Association
 
@@ -65,18 +64,6 @@ Things you may want to cover:
 | water_intake | integer | |
 | toilet_count | integer | |
 | exercise_time | integer | |
-
-### Association
-
--belongs_to :pet
-
-## health_checks テーブル
-
-|Column | Type | Option |
-|id | integer | null: false,primary key |
-|pet_id | integer | null: false,foreign_key: true |
-|date | date | null: false |
-|description | text | |
 |image | string | |
 
 ### Association
@@ -111,7 +98,7 @@ Things you may want to cover:
 
 ## reminders テーブル
 
-|Column Type Options
+|Column| Type | Options|
 |id |integer | null: false, primary key |
 |user_id |integer | null: false, foreign_key: true |
 |title |string | null: false |
