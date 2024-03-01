@@ -45,8 +45,8 @@ Things you may want to cover:
 | user_id | integer | null: false, foreign_key: true |
 | name | string | null: false |
 | age | integer | null: false |
-| weight | integer | |
-| gender | string | |
+| weight | integer |
+| gender | string |
 
 ### Association
 
