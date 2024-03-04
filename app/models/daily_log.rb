@@ -1,0 +1,3 @@
+class DailyLog < ApplicationRecord
+
+end

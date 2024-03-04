@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :pets
   has_many :articles
+
+  validates :name, presence: true
 end
