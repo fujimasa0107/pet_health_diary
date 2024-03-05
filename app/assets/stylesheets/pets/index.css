@@ -1,5 +1,4 @@
 
-
 /*
 VARIABLES
 ================================================ */
@@ -16,60 +15,60 @@ VARIABLES
 GENERAL STYLING
 ================================================ */
 body {
+    color: var(--brown);
     background-color: #FFFDF6;
     text-align: center;
     height: 100vh;
 }
 
+/*
+COMMON
+================================================ */
+
 .hero {
-    position: relative;
     text-align: center;
     margin-bottom: 30px;
-}
 
+}
 .hero-image {
     max-width: 40%;
-    height: auto;
-    width: auto; /* 必要に応じて */
     position: relative;
-    top: 2rem;
+    top: 2rem; /* タイトルの下に配置 */
     margin-top: 30px;
 }
-
 .title {
     font-family: var(--oswald-font);
     font-size: min(10vw, 4rem);
     margin-bottom: 2rem;
     position: absolute;
-    top: 10vh; /* 例: ビューポートの高さに基づく */
-    left: 50%; /* 水平中央 */
-    transform: translateX(-50%); /* 左に自身の幅の50%移動して中央揃え */
+    top:   5%;
+    left: 34%; /* 水平中央 */
 }
 
 @media screen and (max-width: 600px) {
-    .title {
-        font-size: 2rem; /* 小さい画面でのフォントサイズ */
-        top: 10vh; /* 小さい画面での上部の位置 */
-        left: 50%; /* 水平中央 */
-        transform: translateX(-50%);
-    }
-    .hero-image {
-        max-width: 100%; /* 小さい画面での画像の幅 */
-        top: 2rem;
-    }
+  .title {
+    font-size: 2rem; /* 小さい画面でのフォントサイズ */
+    top: 10vh; /* 小さい画面での上部の位置 */
+    left: 50%; /* 水平中央 */
+    transform: translateX(-50%);
+  }
+  .hero-image {
+    max-width: 100%; /* 小さい画面での画像の幅 */
+    top: 2rem;
+  }
 }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
-    .title {
-        font-size: 2.5rem; /* タブレットでのフォントサイズ */
-        top: 15vh; /* タブレットでの上部の位置 */
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .hero-image {
-        max-width: 70%; /* タブレットでの画像の幅 */
-        top: 2rem;
-    }
+  .title {
+    font-size: 2.5rem; /* タブレットでのフォントサイズ */
+    top: 15vh; /* タブレットでの上部の位置 */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .hero-image {
+    max-width: 70%; /* タブレットでの画像の幅 */
+    top: 2rem;
+  }
 }
 
 .btn {
