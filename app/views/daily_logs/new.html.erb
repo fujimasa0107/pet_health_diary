@@ -1,0 +1,41 @@
+       <!-- ローディング画面 -->
+    <%= render "shared/loading"%>
+       <!--トップページ -->
+
+   <%= %>
+
+   <%= form_with model: @pet, local: true do |form| %>
+
+    <div class="field">
+      <%= form.label :food_intake, "食事量" %>
+      <%= form.number_field :food_intake, step: 0.1 %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :water_intake, "水分摂取量" %>
+      <%= form.number_field :water_intake, step: 0.1 %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :toilet_count, "トイレ回数" %>
+      <%= form.number_field :toilet_count %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :exercise_time, "運動時間" %>
+      <%= form.number_field :exercise_time %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :image, "画像アップロード" %>
+      <%= form.file_field :image %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit "登録" %>
+    </div>
+  <% end %>
+
+
+      <!-- ナビゲーションメニュー -->
+    <%= render "shared/nav_meny"%>
