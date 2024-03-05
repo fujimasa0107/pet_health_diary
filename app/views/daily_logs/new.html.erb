@@ -1,9 +1,13 @@
        <!-- ローディング画面 -->
     <%#<%= render "shared/loading"%>
        <!--トップページ -->
-   <%= current_user.pets.first.name %>
+   <%= current_user.name %>
 
-    <%= form_with model: @pet, local: true do |form| %>
+    <%= form_with model: @daily_log, local: true do |form| %>
+
+    <%= form.collection_select :pet_id, current_user.pets, :id, :name, prompt: "ペットを選択" %>
+
+    <%= form.date_field :date, value: Date.today %>
 
     <div class="field">
       <%= form.label :food_intake, "食事量" %>
