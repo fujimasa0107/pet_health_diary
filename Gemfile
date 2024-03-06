@@ -74,11 +74,15 @@ end
 group :development do
   gem 'rubocop', require: false
 end
-
+#ユーザーgem
 gem 'devise'
-
+#デバックツールgem
 gem 'rspec-rails', '~> 4.0.0'
 gem 'pry-rails'
-
+#カレンダーgem
 gem 'simple_calendar'
 gem 'sassc-rails'
+
+#テストコードgem
+gem 'factory_bot_rails'
+gem 'faker'
