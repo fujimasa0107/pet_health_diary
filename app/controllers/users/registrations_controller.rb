@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+
 class Users::RegistrationsController < Devise::RegistrationsController
    before_action :sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -25,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user_pet).permit(:email, :password, :password_confirmation, :name, :pet_name, :pet_age, :pet_weight, :pet_gender)
+    params.require(:user_pet).permit(:email, :password, :password_confirmation, :name,:pet_name, :pet_age, :pet_weight, :pet_gender)
   end
 
   # GET /resource/edit

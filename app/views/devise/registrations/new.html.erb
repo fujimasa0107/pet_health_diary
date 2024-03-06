@@ -1,5 +1,6 @@
 <h2 class="signup-title">Sign up</h2>
 
+
 <%= form_for(@user_pet, url: user_registration_path, data: { turbo: false }) do |f| %>
   <%= render 'shared/error_messages', model: @user_pet %>
 
