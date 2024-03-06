@@ -12,7 +12,7 @@ class DailyLogsController < ApplicationController
 
   def create
 
-    @daily_log = DailyLog.new(daily_log_params)#もしかしたら追記するかも
+    @daily_log = DailyLog.new(daily_log_params)
     if @daily_log.save
        redirect_to root_path
     else
