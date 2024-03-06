@@ -1,0 +1,52 @@
+<h2 class="signup-title">Sign up</h2>
+
+
+<%= form_for(@user_pet, url: user_registration_path, data: { turbo: false }) do |f| %>
+  <%= render 'shared/error_messages', model: @user_pet %>
+
+  <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <%# ペット情報のフィールド %>
+  <div class="form-group">
+    <%= f.label :pet_name, "Pet Name" %><br />
+    <%= f.text_field :pet_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pet_age, "Pet Age" %><br />
+    <%= f.number_field :pet_age %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pet_weight, "Pet Weight" %><br />
+    <%= f.text_field :pet_weight %>
+  </div>
+
+    <%= f.submit "Sign up" %>
+
+    <%= link_to 'backhome', root_path, class: "back-home" %>
+    
+  </div>
+
+<% end %>

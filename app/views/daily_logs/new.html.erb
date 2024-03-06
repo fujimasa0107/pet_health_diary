@@ -1,0 +1,43 @@
+       <!-- ローディング画面 -->
+    <%#<%= render "shared/loading"%>
+       <!--トップページ -->
+   <%= current_user.name %>さん
+
+    <%= form_with model: @daily_log, local: true do |form| %>
+
+    <%= form.collection_select :pet_id, current_user.pets, :id, :name, prompt: "ペットを選択" %>
+
+    <%= form.date_field :date, value: Date.today %>
+
+    <div class="field">
+      <%= form.label :food_intake, "食事量" %>
+      <%= form.number_field :food_intake, step: 1 , placeholder:"食事量（必須)" %>  g
+    </div>
+  
+    <div class="field">
+      <%= form.label :water_intake, "水分摂取量" %>
+      <%= form.number_field :water_intake, step: 1 , placeholder:"水分量（必須)"%>  ml
+    </div>
+  
+    <div class="field">
+      <%= form.label :toilet_count, "トイレ回数" %>
+      <%= form.number_field :toilet_count, placeholder:"トイレ回数（必須)" %>  回
+    </div>
+  
+    <div class="field">
+      <%= form.label :exercise_time, "運動時間" %>
+      <%= form.number_field :exercise_time , placeholder:"運動時間（必須)"%>  分
+    </div>
+  
+    <div class="field">
+      <%= form.label :image, "※任意  画像アップロード" %>
+      <%= form.file_field :image %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit "登録" %>
+    </div>
+  <% end %>
+
+      <!-- ナビゲーションメニュー -->
+    <%= render "shared/nav_meny"%>
