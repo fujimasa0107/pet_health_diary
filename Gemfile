@@ -79,3 +79,6 @@ gem 'devise'
 
 gem 'rspec-rails', '~> 4.0.0'
 gem 'pry-rails'
+
+gem 'simple_calendar'
+gem 'sassc-rails'
