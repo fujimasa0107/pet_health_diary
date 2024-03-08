@@ -38,11 +38,11 @@ COMMON
 }
 .title {
     font-family: var(--oswald-font);
-    font-size: min(10vw, 4rem);
+    font-size: 4rem;
     margin-bottom: 2rem;
     position: absolute;
     top:   5%;
-    left: 34%; /* 水平中央 */
+    left: 50%; /* 水平中央 */
 }
 
 @media screen and (max-width: 600px) {
