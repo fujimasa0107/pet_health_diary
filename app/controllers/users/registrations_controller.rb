@@ -13,15 +13,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user_pet = UserPet.new(sign_up_params)
-    if @user_pet.save
-      sign_in(@user_pet) # Userインスタンスを渡す
+    user = @user_pet.save
+    if user
+      sign_in(user) # Userインスタンスを渡す
       redirect_to root_path
     else
       flash[:user_pet_errors] = @user_pet.errors.full_messages
       redirect_to new_user_registration_path
     end
   end
-
   private
 
   def sign_up_params
