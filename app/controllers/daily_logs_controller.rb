@@ -1,9 +1,11 @@
 class DailyLogsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, except: [:index]
 
   def index
-    @daily_logs = current_user.daily_logs
+    if user_signed_in?
+      @daily_logs = current_user.daily_logs
+    end
   end
 
   def new
