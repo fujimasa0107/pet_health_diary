@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 class Users::RegistrationsController < Devise::RegistrationsController
    before_action :sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -14,12 +13,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user_pet = UserPet.new(sign_up_params)
-    user = @user_pet.save
-    if user
-      sign_in(user) # ここでUserインスタンスを渡す
+    if @user_pet.save
+      sign_in(@user_pet) # Userインスタンスを渡す
       redirect_to root_path
     else
-      render :new
+      flash[:user_pet_errors] = @user_pet.errors.full_messages
+      redirect_to new_user_registration_path
     end
   end
 
