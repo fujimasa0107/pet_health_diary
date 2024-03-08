@@ -1,15 +1,5 @@
 class DailyLogsController < ApplicationController
 
-<<<<<<< HEAD
-  before_action :authenticate_user!, only: [:new, :create]
-  
-  def index
-  end
-
-  def new
-  end
-
-=======
   before_action :authenticate_user!, only: [:index]
 
   def index
@@ -50,5 +40,4 @@ class DailyLogsController < ApplicationController
       totals[:exercise_time] += log.exercise_time
     end
   end
->>>>>>> 024118dd11fb68961ca72d20e69ec8ae1bfe55ad
 end

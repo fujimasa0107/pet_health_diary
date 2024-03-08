@@ -11,6 +11,19 @@
   </head>
 
   <body>
+<% flash.each do |type, messages| %>
+  <div class="<%= type %>">
+    <% if messages.is_a?(Array) %>
+      <ul>
+        <% messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= messages %>
+    <% end %>
+  </div>
+<% end %>
     <%= yield %>
   </body>
 </html>
