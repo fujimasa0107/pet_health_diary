@@ -1,0 +1,38 @@
+    <!-- ローディング画面 -->
+    <%#<%= render "shared/loading"%>
+
+<%= month_calendar month: @daily_log.date do |date| %>
+  <%= date.day %>
+  <% day_logs = @month_daily_logs.select { |log| log.date == date } %>
+
+  <% day_logs.each do |log| %>
+    <div>
+      <%= link_to log.created_at.strftime("%H時%M分"), daily_log_path(log) %>
+      <ul>
+        <li>食事量: <%= log.food_intake %>g</li>
+        <li>水分摂取量: <%= log.water_intake %>ml</li>
+        <li>トイレ回数: <%= log.toilet_count %>回</li>
+        <li>運動時間: <%= log.exercise_time %>分</li>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if day_logs.any? %>
+    <% day_totals = @daily_totals[date] %>
+    <div>
+      <strong>合計:</strong>
+      <ul>
+        <li>食事量: <%= day_totals[:food_intake] %>g</li>
+        <li>水分摂取量: <%= day_totals[:water_intake] %>ml</li>
+        <li>トイレ回数: <%= day_totals[:toilet_count] %>回</li>
+        <li>運動時間: <%= day_totals[:exercise_time] %>分</li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+
+
+
+    <!-- ナビゲーションメニュー -->
+    <%= render "shared/nav_meny"%>
