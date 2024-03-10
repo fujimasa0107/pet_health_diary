@@ -1,16 +1,4 @@
        <!-- ローディング画面 -->
-<<<<<<< HEAD
-    <%= render "shared/loading"%>
-       <!--トップページ -->
-
-   <%= %>
-
-   <%= form_with model: @pet, local: true do |form| %>
-
-    <div class="field">
-      <%= form.label :food_intake, "食事量" %>
-      <%= form.number_field :food_intake, step: 0.1 %>
-=======
     <%#<%= render "shared/loading"%>
        <!--トップページ -->
    <%= current_user.name %>さん
@@ -24,42 +12,25 @@
     <div class="field">
       <%= form.label :food_intake, "食事量" %>
       <%= form.number_field :food_intake, step: 1 , placeholder:"食事量（必須)" %>  g
->>>>>>> 024118dd11fb68961ca72d20e69ec8ae1bfe55ad
     </div>
   
     <div class="field">
       <%= form.label :water_intake, "水分摂取量" %>
-<<<<<<< HEAD
-      <%= form.number_field :water_intake, step: 0.1 %>
-=======
       <%= form.number_field :water_intake, step: 1 , placeholder:"水分量（必須)"%>  ml
->>>>>>> 024118dd11fb68961ca72d20e69ec8ae1bfe55ad
     </div>
   
     <div class="field">
       <%= form.label :toilet_count, "トイレ回数" %>
-<<<<<<< HEAD
-      <%= form.number_field :toilet_count %>
-=======
       <%= form.number_field :toilet_count, placeholder:"トイレ回数（必須)" %>  回
->>>>>>> 024118dd11fb68961ca72d20e69ec8ae1bfe55ad
     </div>
   
     <div class="field">
       <%= form.label :exercise_time, "運動時間" %>
-<<<<<<< HEAD
-      <%= form.number_field :exercise_time %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :image, "画像アップロード" %>
-=======
       <%= form.number_field :exercise_time , placeholder:"運動時間（必須)"%>  分
     </div>
   
     <div class="field">
       <%= form.label :image, "※任意  画像アップロード" %>
->>>>>>> 024118dd11fb68961ca72d20e69ec8ae1bfe55ad
       <%= form.file_field :image %>
     </div>
   
@@ -68,9 +39,5 @@
     </div>
   <% end %>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 024118dd11fb68961ca72d20e69ec8ae1bfe55ad
       <!-- ナビゲーションメニュー -->
     <%= render "shared/nav_meny"%>
