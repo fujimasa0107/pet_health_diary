@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root to: 'daily_logs#index'
 
   resources :users do
-    resources :pets, only: [:new, :create]
+    resources :pets, only: [:new, :create, :edit , :update]
   end
 
-  resources :daily_logs, only: [:index, :new, :create, :show]
+  resources :daily_logs, only: [:index, :new, :create, :show, :edit , :update]
 end
