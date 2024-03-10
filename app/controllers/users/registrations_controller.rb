@@ -22,21 +22,48 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to new_user_registration_path
     end
   end
+
+
+  def edit
+    # 既存のユーザーとペットのデータを使ってUserPetインスタンスを初期化
+    user = current_user
+    pet = user.pets.first # 仮定: ユーザーには少なくとも1つのペットが関連付けられている
+    @user_pet = UserPet.new(
+      name: user.name,
+      pet_name: pet.name, 
+      pet_age: pet.age, 
+      pet_weight: pet.weight, 
+      # ... その他のペット属性
+    )
+    super
+  end
+
+  # PUT /resource
+  def update
+    # UserPetインスタンスを更新パラメータで初期化
+    @user_pet = UserPet.new(account_update_params.merge(user: current_user))
+    @user_pet.update_context = true
+    if @user_pet.save
+      # 成功した場合の処理
+      set_flash_message :notice, :updated
+      sign_in resource_name, resource, bypass: true
+      redirect_to root_path
+    else
+      # 失敗した場合の処理
+      respond_with resource
+    end
+  end
+
   private
 
   def sign_up_params
-    params.require(:user_pet).permit(:email, :password, :password_confirmation, :name,:pet_name, :pet_age, :pet_weight, :pet_gender)
+    params.require(:user_pet).permit(:email, :password, :password_confirmation, :name,:pet_name, :pet_age, :pet_weight)
   end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
-
-  # PUT /resource
-  # def update
-  #   super
-  # end
+  def account_update_params
+    params.require(:user_pet).permit(:name, :pet_name, :pet_age, :pet_weight, :update_context)
+  end
+end
 
   # DELETE /resource
   # def destroy
@@ -73,4 +100,3 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-end
