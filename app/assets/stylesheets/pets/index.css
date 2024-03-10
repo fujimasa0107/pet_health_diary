@@ -42,7 +42,7 @@ COMMON
     margin-bottom: 2rem;
     position: absolute;
     top:   5%;
-    left: 50%; /* 水平中央 */
+    left: 35%; /* 水平中央 */
 }
 
 @media screen and (max-width: 600px) {
@@ -155,13 +155,14 @@ SLIDE MENU
     right: 0;
     z-index: 4;
     padding: 8rem 2rem 2rem;
-    width: max(25vw, 20rem);
+    width: max(25rem, 20rem); /* 単位を'rem'に統一 */
     height: 100vh;
     background-color: var(--brown);
     box-shadow: 0 0 2rem var(--brown);
     font-family: var(--oswald-font);
     translate: 100vw;
 }
+
 .menu-list {
     list-style: none;
 }
