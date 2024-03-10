@@ -5,11 +5,12 @@
 
     <%= form_with model: @daily_log, local: true do |form| %>
 
-    <%= form.collection_select :pet_id, current_user.pets, :id, :name, prompt: "ペットを選択" %>
+    <%= form.collection_select :pet_id, current_user.pets, :id, :name %>
 
     <%= form.date_field :date, value: Date.today %>
 
     <div class="field">
+      
       <%= form.label :food_intake, "食事量" %>
       <%= form.number_field :food_intake, step: 1 , placeholder:"食事量（必須)" %>  g
     </div>

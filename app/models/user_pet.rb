@@ -15,9 +15,8 @@ class UserPet
 
     if update_context
       # 更新処理
-      #user = User.find_by(email: email) # または current_user を使用
       user.update(name: name)
-      pet = user.pets.first # 仮定: ユーザーには少なくとも1つのペットが関連付けられている
+      pet = user.pets.first 
       pet.update(name: pet_name, age: pet_age, weight: pet_weight)
       true
     else

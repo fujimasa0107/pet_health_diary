@@ -25,7 +25,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   def edit
-    # 既存のユーザーとペットのデータを使ってUserPetインスタンスを初期化
     user = current_user
     pet = user.pets.first # 仮定: ユーザーには少なくとも1つのペットが関連付けられている
     @user_pet = UserPet.new(
@@ -33,7 +32,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       pet_name: pet.name, 
       pet_age: pet.age, 
       pet_weight: pet.weight, 
-      # ... その他のペット属性
     )
     super
   end
