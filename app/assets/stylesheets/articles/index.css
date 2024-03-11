@@ -1,0 +1,186 @@
+/* header設定 */
+
+.header{
+  height: 80px;
+  width: 100%;
+  background-color: #FFFDF6;
+  position: fixed;
+  top:0;
+  z-index: 1001
+}
+
+.logo{
+  height: 50px;
+  width: 30%;
+  position: absolute;
+  top: 15%;
+
+}
+
+.archivo-black-regular {
+  font-size: 50px;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.header-btn{
+  height: 40px;
+  width: 30%;
+  position: absolute;
+  right: 5%;
+  top: 25%;
+  display: flex;
+  justify-content: end;
+}
+
+.post-article-btn{
+  height: 40px;
+  width: 48%;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 10px;
+  background: orange;
+  margin-right: 10%;
+}
+
+.menu-bar{
+  height: 40px;
+  width: 100%;
+  background: #FFFDF6;
+  position: absolute;
+  top: 100%;
+}
+
+.menu-elements{
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  margin: auto;
+  display: flex;
+}
+
+#menu1, #menu2, #menu3, #menu4{
+  height: 100%;
+  width: calc(100% / 3);
+  color: white;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #CCCCCC;
+  background: #040880;
+  position: relative;
+}
+
+.menu1-lists{
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  right: 0px;
+}
+
+.hidden{
+  display: none;
+}
+
+/* 全体設定 */
+body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* 記事部分設定 */
+.main-contents {
+  display: flex;
+  margin-top: 120px;
+  width: 100%;
+  padding: 0 100px;
+}
+
+.articles {
+  width: 70%;
+  padding: 30px 50px;
+}
+
+.article {
+  height: 250px;
+  width: 100%;
+  background: #EEEEEE;
+  padding: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-overview {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.article-overview a {
+  display: block;
+  height: 85%;
+}
+
+.article-title, .article-content, .article-information {
+  padding: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.article-title {
+  height: 20%;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: solid 2px #040880;
+}
+
+.article-content {
+  height: 70%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.article-information {
+  height: 15%;
+  display: flex;
+}
+
+.article-post-date, .article-about-time {
+  font-size: 13px;
+}
+
+.article-check {
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.article-check-button {
+  background: #040880;
+  text-align: center;
+  font-size: 13px;
+  color: white;
+  border-radius: 30px;
+}
+
+.article-image {
+  width: 35%;
+}
