@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resources :pets, only: [:new, :create, :edit , :update]
   end
 
-  resources :daily_logs, only: [:index, :new, :create, :show, :edit , :update]
+  resources :daily_logs
 end
