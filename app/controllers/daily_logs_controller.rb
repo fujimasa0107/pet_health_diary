@@ -15,7 +15,8 @@ class DailyLogsController < ApplicationController
   def create
     @daily_log = DailyLog.new(daily_log_params)
     if @daily_log.save
-       redirect_to root_path
+      latest_log = current_user.daily_logs.where("date <= ?", @daily_log.date).last
+      redirect_to daily_log_path(latest_log)
     else
       render :new
     end
@@ -40,6 +41,13 @@ class DailyLogsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @daily_log = current_user.daily_logs.find(params[:id])
+    @daily_log.destroy
+    latest_log = current_user.daily_logs.where("date <= ?", @daily_log.date).last
+    redirect_to daily_log_path(latest_log)
   end
 
   private
