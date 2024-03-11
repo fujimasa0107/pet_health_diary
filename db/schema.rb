@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_01_074829) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_11_062423) do
+  create_table "articles", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_articles_on_category_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "categories", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "daily_logs", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "pet_id", null: false
@@ -45,10 +62,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_074829) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "categories"
+  add_foreign_key "articles", "users"
   add_foreign_key "daily_logs", "pets"
   add_foreign_key "daily_logs", "users"
   add_foreign_key "pets", "users"
