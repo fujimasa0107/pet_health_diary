@@ -11,7 +11,7 @@
     <% @articles.each do |article| %>
       <div class="article" id=<%= article.id%>>
         <div class="article-overview">
-          <%= link_to check_path(article) do %>
+          <%= link_to article_path(article) do %>
             <p class="article-title">
               <%= article.title%>
             </p>
@@ -23,11 +23,8 @@
             <p class="article-post-date">
               <%= article.created_at.strftime("%Y年 %m月 %d日") %>
             </p>
-            <p class="article-about-time">
-              目安時間：<%= article.about_time %>分
-            </p>
             <div class="article-check">
-              <% if Check.where(user_id: current_user.id, article_id: article.id).exists? %>
+              <% if user_signed_in? && Check.where(user_id: current_user.id, article_id: article.id).exists? %>
                 <div class="article-check-button" data-id=<%= article.id %>>
                   既読
                 </div>
@@ -40,5 +37,26 @@
     <% end %>
   </div>
 
-    <!-- ナビゲーションメニュー -->
-    <%= render "shared/nav_meny"%>
+    <div class="ranking">
+    <p class="ranking-name">
+      月間ランキング
+    </p>
+    <div class="ranking-articles">
+      <% @ranking_articles.each_with_index do |r_article, i| %>
+      <div class="ranking-article">
+          <p class="weekly-rank">
+            <%= i+1 %>
+          </p>
+          <div class="ranking-overview">
+            <%= link_to article_path(r_article) do %>
+              <%= image_tag r_article.image.variant(resize_to_fill: [400, 400]), class: "ranking-article-image" %>
+              <div class="ranking-article-title">
+                <%= r_article.title%>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

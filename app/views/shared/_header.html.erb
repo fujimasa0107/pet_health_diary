@@ -1,0 +1,27 @@
+<div class="header"> 
+  <div class="logo">
+    <%= link_to 'Pet News', articles_path, class: 'archivo-black-regular' %>
+  </div>
+  <div class="header-btn">
+    <% if user_signed_in? %>
+      <%= link_to '記事を投稿する', new_article_path, class: "post-article-btn" %>
+    <% end %>
+    <%= link_to 'トップページに戻る', root_path, class: "post-article-btn2" %>
+  </div>
+  <div class="menu-bar">
+    <ul class="menu-elements">
+      <li id="menu1">
+        食事
+      </li>
+      <li id="menu2">
+        運動
+      </li>
+      <li id="menu3">
+        ワクチン
+      </li>
+      <li id="menu4">
+        病名
+      </li>
+    </ul>
+  </div>
+</div>

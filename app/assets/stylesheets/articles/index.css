@@ -43,6 +43,16 @@
   background: orange;
   margin-right: 10%;
 }
+.post-article-btn2{
+  height: 40px;
+  width: 48%;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 10px;
+  color: white;
+  background: #040880;
+  margin-right: 10%;
+}
 
 .menu-bar{
   height: 40px;
@@ -183,4 +193,63 @@ a {
 
 .article-image {
   width: 35%;
+}
+
+/* ランキング部分設定 */
+
+.ranking{
+  width: 30%;
+  padding: 30px 50px;
+}
+
+.ranking-name{
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #EEEEEE;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ranking-articles{
+  width: 100%;
+}
+
+.ranking-article{
+  height: 200px;
+  border-bottom: solid 2px #EEEEEE;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.weekly-rank{
+  width: 20%;
+  line-height: 200px;
+}
+
+.ranking-overview{
+  width: 80%;
+  padding: 10px 5px;
+}
+
+.ranking-article-title{
+  height: 50px;
+  width: 80%;
+  padding: 0 5px;
+  line-height: 50px;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ranking-article-image{
+  display: block;
+  height: 120px;
+  width: 80%;
 }

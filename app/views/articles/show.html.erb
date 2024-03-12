@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+<div class="show-article">
+  <p class="show-article-title">
+    <%= @article.title %>
+  </p>
+  <p class="show-article-post-date">
+    <%= @article.created_at.strftime("%Y年 %m月 %d日") %>
+  </p>
+  <%= image_tag @article.image.variant(resize: '500x500'), class: "show-article-image" %>
+  <p class="show-article-content">
+    <%= @article.content %>
+  </p>
+</div>
+
+<% if current_user.admin == true %>
+  <div class="change-article">
+    <div class="edit-article">
+      <%= link_to "編集", edit_article_path(@article), class:"edit-btn" %>
+    </div>
+    <div class="delete-article">
+      <%= link_to "削除", article_path(@article), method: :delete, class:"delete-btn" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="return-toppage">
+  <%= link_to "トップページへ戻る", articles_path, class:"return-btn" %>
+</div>
