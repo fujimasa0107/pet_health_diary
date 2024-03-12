@@ -1,0 +1,95 @@
+/* header設定 */
+
+.header{
+  height: 80px;
+  width: 100%;
+  background-color: #FFFDF6;
+  position: fixed;
+  top:0;
+  z-index: 1001
+}
+
+.logo{
+  height: 50px;
+  width: 30%;
+  position: absolute;
+  top: 15%;
+
+}
+
+.archivo-black-regular {
+  font-size: 50px;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.header-btn{
+  height: 40px;
+  width: 30%;
+  position: absolute;
+  right: 5%;
+  top: 25%;
+  display: flex;
+  justify-content: end;
+}
+
+.post-article-btn{
+  height: 40px;
+  width: 48%;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 10px;
+  background: orange;
+  margin-right: 10%;
+}
+.post-article-btn2{
+  height: 40px;
+  width: 48%;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 10px;
+  color: white;
+  background: #040880;
+  margin-right: 10%;
+}
+
+.menu-bar{
+  height: 40px;
+  width: 100%;
+  background: #FFFDF6;
+  position: absolute;
+  top: 100%;
+}
+
+.menu-elements{
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  margin: auto;
+  display: flex;
+}
+
+.menu-item{
+  height: 100%;
+  width: calc(100% / 4);
+  color: white;
+  text-align: center;
+  padding: 15px 25px;
+  margin: 0px 10px;
+  border: 1px solid #CCCCCC;
+  background: #040880;
+  position: relative;
+  border-radius: 50%;
+}
+
+.menu1-lists{
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  right: 0px;
+}
+
+.hidden{
+  display: none;
+}
