@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   resources :daily_logs
 
   # 記事に関するルーティング
-  resources :articles, only: [:index, :new]  # 全ての記事を表示するためのルーティング
+  resources :articles, only: [:index, :new, :create, :show]  # 全ての記事を表示するためのルーティング
   resources :categories do
-    resources :articles, only: [:index, :new] # 特定のカテゴリーの記事を表示するためのルーティング
+    resources :articles, only: [:index, :new, :create, :show] # 特定のカテゴリーの記事を表示するためのルーティング
   end
 end
