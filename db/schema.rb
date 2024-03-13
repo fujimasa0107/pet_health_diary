@@ -60,9 +60,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_12_032256) do
   create_table "checks", charset: "utf8", force: :cascade do |t|
     t.bigint "article_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_checks_on_article_id"
+    t.index ["category_id"], name: "index_checks_on_category_id"
     t.index ["user_id"], name: "index_checks_on_user_id"
   end
 
@@ -110,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_12_032256) do
   add_foreign_key "articles", "categories"
   add_foreign_key "articles", "users"
   add_foreign_key "checks", "articles"
+  add_foreign_key "checks", "categories"
   add_foreign_key "checks", "users"
   add_foreign_key "daily_logs", "pets"
   add_foreign_key "daily_logs", "users"

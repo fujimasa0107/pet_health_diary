@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :pets
-  has_many :articles
   has_many :daily_logs
+  has_many :checks
+  has_many :articles, through: :checks
 
   validates :name, presence: true
 end
