@@ -30,6 +30,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article.increment!(:views_count)
+    
     if user_signed_in?
       Check.find_or_create_by(user_id: current_user.id, article_id: @article.id)
     end

@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   resources :articles
   get 'checks/:id', to: 'checks#check', as: 'check'
   post 'checks/:id/revert_check', to: 'checks#revert_check', as: 'revert_check'
-  
 end
