@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   # 記事に関するルーティング
   resources :articles, only: [:index, :new, :create, :show]  # 全ての記事を表示するためのルーティング
-  resources :categories do
-    resources :articles, only: [:index, :new, :create, :show] # 特定のカテゴリーの記事を表示するためのルーティング
-  end
+  get 'checks/:id', to: 'checks#check', as: 'check'
+  post 'checks/:id/revert_check', to: 'checks#revert_check', as: 'revert_check'
 end
