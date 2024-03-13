@@ -12,7 +12,7 @@
   </p>
 </div>
 
-<% if current_user.admin == true %>
+<% if current_user %>
   <div class="change-article">
     <div class="edit-article">
       <%= link_to "編集", edit_article_path(@article), class:"edit-btn" %>

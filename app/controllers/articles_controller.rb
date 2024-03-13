@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
   def index
     # 月間ランキング用の記事
     @ranking_articles = Article.where('created_at >= ?', 1.month.ago)
@@ -27,8 +29,31 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
     @article.increment!(:views_count)
+    if user_signed_in?
+      Check.find_or_create_by(user_id: current_user.id, article_id: @article.id)
+    end
+  end
+
+  def edit
+  end
+  
+  def update
+    if @article.update(article_params)
+      return redirect_to article_path(@article)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @article = current_user.article.find(params[:id])
+
+    if @article.destroy
+      return redirect_to root_path
+    else
+      render 'show'
+    end
   end
 
   private
@@ -39,6 +64,10 @@ class ArticlesController < ApplicationController
       :content,
       :image
     ).merge(user_id: current_user.id)
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 end
 

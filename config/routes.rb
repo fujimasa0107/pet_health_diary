@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :daily_logs
 
   # 記事に関するルーティング
-  resources :articles, only: [:index, :new, :create, :show]  # 全ての記事を表示するためのルーティング
+  resources :articles
   get 'checks/:id', to: 'checks#check', as: 'check'
   post 'checks/:id/revert_check', to: 'checks#revert_check', as: 'revert_check'
+  
 end

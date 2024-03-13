@@ -1,7 +1,6 @@
 class Article < ApplicationRecord
-  belongs_to :user
-  belongs_to :category
-
+  has_many :checks, dependent: :destroy
+  has_many :users, through: :checks
   has_one_attached :image
 
   with_options presence: true do

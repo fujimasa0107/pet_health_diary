@@ -1,6 +1,5 @@
 class ChecksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_article, only: [:check, :revert_check]
 
   def check
     # find_or_create_byとは、「レコードがなければ作り、あればレコード情報を返す」というメソッド
@@ -11,9 +10,5 @@ class ChecksController < ApplicationController
 
   def revert_check
     Check.find_by(user_id: current_user.id, article_id: @article.id).destroy
-  end
-
-  def set_article
-    @article = Article.find(params[:id])
   end
 end

@@ -6,7 +6,7 @@
     <% @articles.each do |article| %>
       <div class="article" id=<%= article.id%>>
         <div class="article-overview">
-          <%= link_to article_path(article) do %>
+          <%= link_to check_path(article) do %>
             <p class="article-title">
               <%= article.title%>
             </p>
@@ -18,13 +18,13 @@
             <p class="article-post-date">
               <%= article.created_at.strftime("%Y年 %m月 %d日") %>
             </p>
-    <div class="article-check">
-      <% if user_signed_in? && Check.where(user_id: current_user.id, article_id: article.id).exists? %>
-        <div class="article-check-button" data-id=<%= article.id %>>
-        既読
-        </div>
-      <% end %>
-    </div>
+            <div class="article-check">
+              <% if Check.where(user_id: current_user.id, article_id: article.id).exists? %>
+                <div class="article-check-button" data-id=<%= article.id %>>
+                  既読
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
         <%= image_tag article.image.variant(resize_to_fill: [400, 400]), class: "article-image" %>
