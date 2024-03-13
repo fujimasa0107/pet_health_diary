@@ -4,6 +4,10 @@ class Article < ApplicationRecord
 
   has_one_attached :image
 
-  validates :title, presence: true, length: { maximum: 20 } # タイトルは必須かつ20文字以内
-  validates :content, presence: true # コンテンツは必須
+  with_options presence: true do
+    validates :image
+    validates :title, length: { maximum: 20 }
+    validates :content
+    validates :user_id
+  end
 end
