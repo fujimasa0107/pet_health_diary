@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :pets
   has_many :daily_logs
+  has_many :gallery_images
   has_many :checks, dependent: :destroy
   has_many :articles, through: :checks
 
