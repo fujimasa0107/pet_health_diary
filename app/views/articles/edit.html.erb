@@ -1,0 +1,14 @@
+<%= render "shared/header" %>
+
+<div class="post-article-form">
+  <%= form_with(model: @article, local: true) do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <p><%= f.label :title, '記事名' %><span>（必須・20文字以内）</span></p>
+    <%= f.text_field :title, class:"new-article-title", placeholder: "記事名" %>
+    <p><%= f.label :content, '記事内容' %><span>（必須）</span></p>
+    <%= f.text_area :content, class:"new-article-content", placeholder: "記事内容" %>
+    <p><%= f.label :image, 'アイキャッチ画像' %><span>（必須）</span></p>
+    <%= f.file_field :image, class:"new-article-image", id:"new-article-image" %>
+    <%= f.submit "投稿", class:"new-article-submit_btn" %>
+  <% end %>
+</div>

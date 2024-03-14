@@ -1,0 +1,60 @@
+.post-article-form {
+  margin-top: calc(80px + 40px);
+  width: 100%;
+  padding: 30px 100px;
+}
+
+.post-article-form form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+form p {
+  width: 70%;
+}
+
+span {
+  color: red;
+  font-weight: bold;
+}
+
+.new-article-title, 
+.new-article-content, 
+.new-article-image, 
+.new-article-about-time, 
+.new-article-category {
+  width: 70%;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+.new-article-title {
+  height: 50px;
+}
+
+.new-article-content {
+  height: 400px;
+}
+
+.new-article-about-time {
+  height: 50px;
+}
+
+.new-article-category {
+  height: 50px;
+  padding: 0.25em 0.5em; /* 見た目の調整 */
+  font-size: 1em; /* 文字サイズを調整 */
+  border: 1px solid #cccccc; /* 枠線の追加 */
+}
+
+.new-article-submit_btn {
+  height: 50px;
+  width: 30%;
+  margin-bottom: 30px;
+  background-color: #4CAF50; /* ボタンの色 */
+  color: white; /* 文字の色 */
+  border: none; /* 枠線の削除 */
+  border-radius: 4px; /* 角を丸くする */
+  cursor: pointer; /* マウスオーバーでカーソルを変更 */
+}

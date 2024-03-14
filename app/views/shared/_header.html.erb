@@ -1,0 +1,24 @@
+<div class="header"> 
+  <div class="logo">
+    <%= link_to 'Pet News', articles_path, class: 'archivo-black-regular' %>
+  </div>
+  <div class="header-btn">
+    <% if user_signed_in? %>
+      <%= link_to '記事を投稿する', new_article_path, class: "post-article-btn" %>
+    <% end %>
+    <%= link_to 'トップページに戻る', root_path, class: "post-article-btn2" %>
+  </div>
+  <div class="menu-bar">
+    <ul class="menu-elements">
+      <% food_category = Category.find_by(name: "食事") %>
+      <% exercise_category = Category.find_by(name: "運動") %>
+      <% vaccine_category = Category.find_by(name: "ワクチン") %>
+      <% disease_category = Category.find_by(name: "病名") %>
+
+    <li><%= link_to '食事', articles_path(category_id: food_category.id), class: "menu-item" if food_category %></li>
+    <li><%= link_to '運動', articles_path(category_id: exercise_category.id), class: "menu-item" if exercise_category %></li>
+    <li><%= link_to 'ワクチン', articles_path(category_id: vaccine_category.id), class: "menu-item" if vaccine_category %></li>
+    <li><%= link_to '病名', articles_path(category_id: disease_category.id), class: "menu-item" if disease_category %></li>
+  </ul>
+  </div>
+</div>
