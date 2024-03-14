@@ -15,6 +15,7 @@
       <% vaccine_category = Category.find_by(name: "ワクチン") %>
       <% disease_category = Category.find_by(name: "病名") %>
 
+    <li><%= link_to '全体記事', articles_path, class: "menu-item"  %></li>
     <li><%= link_to '食事', articles_path(category_id: food_category.id), class: "menu-item" if food_category %></li>
     <li><%= link_to '運動', articles_path(category_id: exercise_category.id), class: "menu-item" if exercise_category %></li>
     <li><%= link_to 'ワクチン', articles_path(category_id: vaccine_category.id), class: "menu-item" if vaccine_category %></li>
