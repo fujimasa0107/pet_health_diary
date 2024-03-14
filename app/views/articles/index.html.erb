@@ -19,7 +19,7 @@
               <%= article.created_at.strftime("%Y年 %m月 %d日") %>
             </p>
             <div class="article-check">
-              <% if Check.where(user_id: current_user.id, article_id: article.id).exists? %>
+              <% if user_signed_in? && Check.where(user_id: current_user.id, article_id: article.id).exists? %>
                 <div class="article-check-button" data-id=<%= article.id %>>
                   既読
                 </div>
@@ -32,7 +32,6 @@
     <% end %>
   </div>
 
-
     <div class="ranking">
     <p class="ranking-name">
       月間ランキング
@@ -44,7 +43,7 @@
             <%= i+1 %>
           </p>
           <div class="ranking-overview">
-            <%= link_to article_path(r_article) do %>
+            <%= link_to check_path(r_article) do %>
               <%= image_tag r_article.image.variant(resize_to_fill: [400, 400]), class: "ranking-article-image" %>
               <div class="ranking-article-title">
                 <%= r_article.title%>

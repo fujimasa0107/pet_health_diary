@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  belongs_to :user
+  
   has_many :checks, dependent: :destroy
   has_many :users, through: :checks
   has_one_attached :image

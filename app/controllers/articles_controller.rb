@@ -30,13 +30,10 @@ class ArticlesController < ApplicationController
 
   def show
     @article.increment!(:views_count)
-    
-    if user_signed_in?
-      Check.find_or_create_by(user_id: current_user.id, article_id: @article.id)
-    end
   end
 
   def edit
+    @article.user == current_user
   end
   
   def update
@@ -48,12 +45,12 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = current_user.article.find(params[:id])
-
-    if @article.destroy
-      return redirect_to root_path
+    @article = Article.find(params[:id])
+    if @article.user == current_user
+      @article.destroy
+      redirect_to articles_path, notice: '記事が削除されました。'
     else
-      render 'show'
+      redirect_to articles_path, alert: '他のユーザーの記事は削除できません。'
     end
   end
 

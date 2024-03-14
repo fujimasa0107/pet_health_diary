@@ -12,13 +12,13 @@
   </p>
 </div>
 
-<% if current_user %>
+<% if @article.user == current_user %>
   <div class="change-article">
     <div class="edit-article">
       <%= link_to "編集", edit_article_path(@article), class:"edit-btn" %>
     </div>
     <div class="delete-article">
-      <%= link_to "削除", article_path(@article), method: :delete, class:"delete-btn" %>
+      <%= link_to '削除', article_path(@article), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'delete-btn' %>
     </div>
   </div>
 <% end %>

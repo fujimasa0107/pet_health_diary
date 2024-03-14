@@ -1,14 +1,22 @@
 class ChecksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_article, only: [:check, :revert_check]
 
   def check
-    # find_or_create_byとは、「レコードがなければ作り、あればレコード情報を返す」というメソッド
-    Check.find_or_create_by(user_id: current_user.id, article_id: @article.id)
-    # 既読のレコードを作成したら詳細ページを表示
-    redirect_to controller: :articles, action: :show
+    if user_signed_in?
+      Check.find_or_create_by(user_id: current_user.id, article_id: @article.id)
+    end
+    redirect_to article_path(@article)
   end
 
   def revert_check
-    Check.find_by(user_id: current_user.id, article_id: @article.id).destroy
+    if user_signed_in?
+      check = Check.find_by(user_id: current_user.id, article_id: @article.id)
+      check.destroy if check
+    end
+    head :no_content
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 end

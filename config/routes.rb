@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   # 記事に関するルーティング
   resources :articles
   get 'checks/:id', to: 'checks#check', as: 'check'
-  post 'checks/:id/revert_check', to: 'checks#revert_check', as: 'revert_check'
+  post 'checks/:id/revert_check', to: 'checks#revert_check', as: 'create_revert_check'
+  
 end
