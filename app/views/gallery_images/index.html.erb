@@ -1,0 +1,28 @@
+<%# app/views/gallery_images/index.html.erb %>
+<section class="gallery">
+  <div class="main-image">
+    <%# 画像があれば最初の画像を表示 %>
+    <% if @gallery_images.any? %>
+      <%= image_tag @gallery_images.first.image, class: "gallery-main-img" %>
+    <% end %>
+  </div>
+
+  <div class="right-content">
+    <h2 class="gallery-title">Pet Gallery</h2>
+    <div class="gallery-thumbnails">
+      <% @gallery_images.each do |gallery_image| %>
+        <div class="gallery-thumbnail">
+          <%= image_tag gallery_image.image, class: "gallery-thumb-img" %>
+          <p class="gallery-image-date"><%= gallery_image.daily_log.date.strftime("%Y年%m月%d日") %></p>
+        </div>
+      <% end %>
+    </div>
+    <% if @gallery_images.blank? %>
+      <p>画像がありません。</p>
+    <% end %>
+  </div>
+</section>
+
+  <!-- ナビゲーションメニュー -->
+  <%= render "shared/nav_meny"%>
+
