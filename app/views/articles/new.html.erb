@@ -15,7 +15,8 @@
 
     <p><%= f.label :image, 'アイキャッチ画像' %><span>（必須）</span></p>
     <%= f.file_field :image, class:"new-article-image", id:"new-article-image" %>
-
+    <div id="previews"></div>
+    
     <%= f.submit "投稿", class:"new-article-submit_btn" %>
   <% end %>
 </div>
