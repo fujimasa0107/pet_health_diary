@@ -12,14 +12,16 @@
     <ul class="menu-elements">
       <% food_category = Category.find_by(name: "食事") %>
       <% exercise_category = Category.find_by(name: "運動") %>
-      <% vaccine_category = Category.find_by(name: "ワクチン") %>
-      <% disease_category = Category.find_by(name: "病名") %>
-
-    <li><%= link_to '全体記事', articles_path, class: "menu-item"  %></li>
-    <li><%= link_to '食事', articles_path(category_id: food_category.id), class: "menu-item" if food_category %></li>
-    <li><%= link_to '運動', articles_path(category_id: exercise_category.id), class: "menu-item" if exercise_category %></li>
-    <li><%= link_to 'ワクチン', articles_path(category_id: vaccine_category.id), class: "menu-item" if vaccine_category %></li>
-    <li><%= link_to '病名', articles_path(category_id: disease_category.id), class: "menu-item" if disease_category %></li>
-  </ul>
+      <% vaccine_category = Category.find_by(name: "予防接種") %>
+      <% disease_category = Category.find_by(name: "病気・ケガ") %>
+      <% other_category = Category.find_by(name: "その他") %>
+    
+      <li><%= link_to '全体記事', articles_path, class: "menu-item" %></li>
+      <li><%= link_to '食事', articles_path(category_id: food_category.id), class: "menu-item" if food_category %></li>
+      <li><%= link_to '運動', articles_path(category_id: exercise_category.id), class: "menu-item" if exercise_category %></li>
+      <li><%= link_to '予防接種', articles_path(category_id: vaccine_category.id), class: "menu-item" if vaccine_category %></li>
+      <li><%= link_to '病気・ケガ', articles_path(category_id: disease_category.id), class: "menu-item" if disease_category %></li>
+      <li><%= link_to 'その他', articles_path(category_id: other_category.id), class: "menu-item" if other_category %></li>
+    </ul>
   </div>
 </div>
