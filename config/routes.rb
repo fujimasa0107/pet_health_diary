@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :pets, only: [:new, :create, :edit , :update]
+      resources :gallery_images, only: [:index]
   end
 
   #管理に関するルーティング
