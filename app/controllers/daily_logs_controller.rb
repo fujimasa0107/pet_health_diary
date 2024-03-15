@@ -15,7 +15,17 @@ class DailyLogsController < ApplicationController
   def create
     @daily_log = DailyLog.new(daily_log_params)
     if @daily_log.save
-      latest_log = current_user.daily_logs.where("date <= ?", @daily_log.date).last
+      if @daily_log.image.attached?
+        gallery_image = GalleryImage.new(
+          user_id: current_user.id,
+          daily_log_id: @daily_log.id,
+          date: @daily_log.date,
+          image: @daily_log.image.blob
+        )
+        gallery_image.save
+      end
+      # 最新のログを取得
+      latest_log = @daily_log
       redirect_to daily_log_path(latest_log)
     else
       render :new
@@ -48,6 +58,13 @@ class DailyLogsController < ApplicationController
     @daily_log.destroy
     latest_log = current_user.daily_logs.where("date <= ?", @daily_log.date).last
     redirect_to daily_log_path(latest_log)
+  end
+
+  def create_gallery_image(daily_log)
+    if daily_log.image.attached?
+      gallery_image = GalleryImage.new(user: current_user, image: daily_log.image.blob, date: daily_log.date)
+      gallery_image.save
+    end
   end
 
   private
