@@ -83,9 +83,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_14_063117) do
 
   create_table "gallery_images", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "daily_log_id", null: false
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["daily_log_id"], name: "index_gallery_images_on_daily_log_id"
     t.index ["user_id"], name: "index_gallery_images_on_user_id"
   end
 
@@ -108,7 +110,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_14_063117) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -121,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_14_063117) do
   add_foreign_key "checks", "users"
   add_foreign_key "daily_logs", "pets"
   add_foreign_key "daily_logs", "users"
+  add_foreign_key "gallery_images", "daily_logs"
   add_foreign_key "gallery_images", "users"
   add_foreign_key "pets", "users"
 end
