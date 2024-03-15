@@ -36,6 +36,14 @@
       <%= form.file_field :image %>
     </div>
 
+    <%# 既にアップロードされている画像があれば表示する %>
+    <% if @daily_log.image.attached? %>
+      <div class="field">
+        <p>現在の画像:</p>
+        <%= image_tag @daily_log.image %>
+      </div>
+    <% end %>
+    
   <div class="actions">
     <%= form.submit "編集" %>
 

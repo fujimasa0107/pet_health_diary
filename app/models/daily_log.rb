@@ -2,6 +2,9 @@ class DailyLog < ApplicationRecord
   belongs_to :pet
   belongs_to :user
 
+  has_many :gallery_images
+  has_one_attached :image
+
   validates :date, presence: true
   validates :food_intake, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :water_intake, presence: true, numericality: { greater_than_or_equal_to: 0 }
