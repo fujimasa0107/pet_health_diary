@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
-
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
+
   def index
     # 月間ランキング用の記事
     @ranking_articles = Article.where('created_at >= ?', 1.month.ago)
@@ -65,7 +67,14 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.find_by(id: params[:id])
+    unless @article
+      redirect_to new_user_session_path, alert: 'ログインが必要です。'
+    end
+  end
+
+  def check_user
+    redirect_to articles_path, alert: '権限がありません。' unless @article.user == current_user
   end
 end
 
