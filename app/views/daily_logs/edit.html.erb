@@ -1,52 +1,66 @@
-<%= form_with(model: @daily_log, local: true) do |form| %>
-  <% if @daily_log.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@daily_log.errors.count, "error") %> prohibited this daily_log from being saved:</h2>
-
-      <ul>
-      <% @daily_log.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="login-page">
+  <div class="form">
+    <%= form_with(model: @daily_log, local: true) do |form| %>
+      <% if @daily_log.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@daily_log.errors.count, "error") %> prohibited this daily_log from being saved:</h2>
+          <ul>
+          <% @daily_log.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-    <div class="field">
-      <%= form.label :food_intake, "食事量" %>
-      <%= form.number_field :food_intake, step: 1 , placeholder:"食事量（必須)" %>  g
-    </div>
-  
-    <div class="field">
-      <%= form.label :water_intake, "水分摂取量" %>
-      <%= form.number_field :water_intake, step: 1 , placeholder:"水分量（必須)"%>  ml
-    </div>
-  
-    <div class="field">
-      <%= form.label :toilet_count, "トイレ回数" %>
-      <%= form.number_field :toilet_count, placeholder:"トイレ回数（必須)" %>  回
-    </div>
-  
-    <div class="field">
-      <%= form.label :exercise_time, "運動時間" %>
-      <%= form.number_field :exercise_time , placeholder:"運動時間（必須)"%>  分
-    </div>
-  
-    <div class="field">
-      <%= form.label :image, "※任意  画像アップロード" %>
-      <%= form.file_field :image %>
-    </div>
+      <div class="field with-unit">
+        <%= form.label :food_intake, "食事量" %>
+        <div class="input-with-unit">
+          <%= form.number_field :food_intake, step: 1, placeholder: "食事量（必須)", class: "form-control" %>
+          <span class="unit">g</span>
+        </div>
+      </div>
 
-    <%# 既にアップロードされている画像があれば表示する %>
-    <% if @daily_log.image.attached? %>
+      <div class="field with-unit">
+        <%= form.label :water_intake, "水分摂取量" %>
+        <div class="input-with-unit">
+          <%= form.number_field :water_intake, step: 1, placeholder: "水分量（必須)", class: "form-control" %>
+          <span class="unit">ml</span>
+        </div>
+      </div>
+
+      <div class="field with-unit">
+        <%= form.label :toilet_count, "トイレ回数" %>
+        <div class="input-with-unit">
+          <%= form.number_field :toilet_count, placeholder: "トイレ回数（必須)", class: "form-control" %>
+          <span class="unit">回</span>
+        </div>
+      </div>
+
+      <div class="field with-unit">
+        <%= form.label :exercise_time, "運動時間" %>
+        <div class="input-with-unit">
+          <%= form.number_field :exercise_time, placeholder: "運動時間（必須)", class: "form-control" %>
+          <span class="unit">分</span>
+        </div>
+      </div>
+
+      <% if @daily_log.image.attached? %>
+        <div class="field">
+          <p class="edit-text">現在の画像</p>
+          <%= image_tag @daily_log.image, class: "preview-size", id: "previews" %>
+        </div>
+      <% end %>
+
       <div class="field">
-        <p>現在の画像:</p>
-        <%= image_tag @daily_log.image %>
+        <%= form.label :image, "※変更後の画像" %>
+        <%= form.file_field :image, class: "form-control" %>
+        <div id="previews"></div>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "編集", class: "form-button" %>
+        <%= link_to "削除", daily_log_path(@daily_log), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "delete-button" %>
       </div>
     <% end %>
-    
-  <div class="actions">
-    <%= form.submit "編集" %>
-
-    <%= link_to "削除", daily_log_path(@daily_log), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
   </div>
-<% end %>
+</div>
