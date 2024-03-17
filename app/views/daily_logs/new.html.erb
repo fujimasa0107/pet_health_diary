@@ -1,13 +1,15 @@
 <div class="login-page">
   <div class="form">
 
-    <% if current_user.pets.any? %>
-      <div class="field">
-        <div class="pet-name-display"><%= current_user.pets.first.name %></div>
-      </div>
-    <% end %>
-
     <%= form_with model: @daily_log, local: true do |form| %>
+
+      <% if current_user.pets.any? %>
+        <div class="field">
+          <div class="pet-name-display"><%= current_user.pets.first.name %></div>
+          <%= form.hidden_field :pet_id, value: current_user.pets.first.id %>
+        </div>
+      <% end %>
+      
       <div class="field">
         <%= form.label :date, "日付" %>
         <%= form.date_field :date, value: Date.today, class: "form-control" %>
