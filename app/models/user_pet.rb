@@ -2,13 +2,13 @@ class UserPet
   include ActiveModel::Model
   attr_accessor :email, :password, :password_confirmation, :name, :pet_name, :pet_age, :pet_weight, :update_context, :user
 
-  validates :email, presence: { message: 'Please enter an email address' }, unless: -> { update_context }
-  validates :password, presence: { message: 'Please enter a password' }, confirmation: true, unless: -> { update_context }
-  validates :password_confirmation, presence: { message: 'Please confirm your password' }, unless: -> { update_context }
-  validates :name, presence: { message: 'Please enter a name' }
-  validates :pet_name, presence: { message: 'Please enter your pet\'s name' }
-  validates :pet_age, numericality: { only_integer: true, greater_than: 0, message: 'Please enter a valid pet age' }
-  validates :pet_weight, numericality: { greater_than_or_equal_to: 0, message: 'Please enter a valid pet weight' }
+  validates :email, presence: true, unless: -> { update_context }
+  validates :password, presence: true, confirmation: true, unless: -> { update_context }
+  validates :password_confirmation, presence: true, unless: -> { update_context }
+  validates :name, presence: true
+  validates :pet_name, presence: true
+  validates :pet_age, numericality: { only_integer: true, greater_than: 0 }
+  validates :pet_weight, numericality: { greater_than_or_equal_to: 0 }
   
   def save
     return false unless valid?

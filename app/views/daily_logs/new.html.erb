@@ -1,42 +1,62 @@
-   <%= current_user.name %>さん
+<div class="login-page">
+  <div class="form">
+
+    <% if current_user.pets.any? %>
+      <div class="field">
+        <div class="pet-name-display"><%= current_user.pets.first.name %></div>
+      </div>
+    <% end %>
 
     <%= form_with model: @daily_log, local: true do |form| %>
+      <div class="field">
+        <%= form.label :date, "日付" %>
+        <%= form.date_field :date, value: Date.today, class: "form-control" %>
+      </div>
 
-    <%= form.collection_select :pet_id, current_user.pets, :id, :name %>
+      <div class="field with-unit">
+        <%= form.label :food_intake, "食事量" %>
+        <div class="input-with-unit">
+          <%= form.number_field :food_intake, step: 1, placeholder: "食事量（必須)", class: "form-control" %>
+          <span class="unit">g</span>
+        </div>
+      </div>
 
-    <%= form.date_field :date, value: Date.today %>
+      <div class="field with-unit">
+        <%= form.label :water_intake, "水分摂取量" %>
+        <div class="input-with-unit">
+          <%= form.number_field :water_intake, step: 1, placeholder: "水分量（必須)", class: "form-control" %>
+          <span class="unit">ml</span>
+        </div>
+      </div>
 
-    <div class="field">
-      
-      <%= form.label :food_intake, "食事量" %>
-      <%= form.number_field :food_intake, step: 1 , placeholder:"食事量（必須)" %>  g
-    </div>
-  
-    <div class="field">
-      <%= form.label :water_intake, "水分摂取量" %>
-      <%= form.number_field :water_intake, step: 1 , placeholder:"水分量（必須)"%>  ml
-    </div>
+      <div class="field with-unit">
+        <%= form.label :toilet_count, "トイレ回数" %>
+        <div class="input-with-unit">
+          <%= form.number_field :toilet_count, placeholder: "トイレ回数（必須)", class: "form-control" %>
+          <span class="unit">回</span>
+        </div>
+      </div>
 
-    <div class="field">
-      <%= form.label :toilet_count, "トイレ回数" %>
+      <div class="field with-unit">
+        <%= form.label :exercise_time, "運動時間" %>
+        <div class="input-with-unit">
+          <%= form.number_field :exercise_time, placeholder: "運動時間（必須)", class: "form-control" %>
+          <span class="unit">分</span>
+        </div>
+      </div>
 
-      <%= form.number_field :toilet_count, placeholder:"トイレ回数（必須)" %>  回
-    </div>
-  
-    <div class="field">
-      <%= form.label :exercise_time, "運動時間" %>
-      <%= form.number_field :exercise_time , placeholder:"運動時間（必須)"%>  分
-    </div>
-  
-    <div class="field">
-      <%= form.label :image, "※任意  画像アップロード" %>
-      <%= form.file_field :image %>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit "登録" %>
-    </div>
-  <% end %>
+      <div class="field">
+        <%= form.label :image, "※任意 画像アップロード" %>
+        <%= form.file_field :image, class: "form-control" %>
+        <div id="previews"></div>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "登録", class: "form-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
       <!-- ナビゲーションメニュー -->
   <%= render "shared/nav_meny"%>

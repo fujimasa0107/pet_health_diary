@@ -1,6 +1,7 @@
 class DailyLogsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index]
+  before_action :set_daily_log, only: [:show, :edit, :update, :destroy]
 
   def index
     if user_signed_in?
@@ -90,5 +91,12 @@ class DailyLogsController < ApplicationController
       month_total[:exercise_time] += day_totals[:exercise_time]
     end
     month_total
+  end
+end
+
+def set_daily_log
+  @daily_log = current_user.daily_logs.find_by(id: params[:id])
+  unless @daily_log
+    redirect_to root_path, alert: 'アクセス権限がありません。'
   end
 end

@@ -18,7 +18,7 @@
       <%= link_to "編集", edit_article_path(@article), class:"edit-btn" %>
     </div>
     <div class="delete-article">
-      <%= link_to '削除', article_path(@article), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'delete-btn' %>
+      <%= link_to '削除', article_path(@article), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: 'delete-btn' %>
     </div>
   </div>
 <% end %>

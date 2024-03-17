@@ -1,0 +1,33 @@
+.preview-size{
+  height: 150px;
+  width: auto;
+}
+
+.input-with-unit {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-unit .form-control {
+  flex-grow: 1;
+  margin-right: 8px; /* 入力フィールドと単位の間隔を設定 */
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+.field > strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.pet-name-display {
+  padding: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
