@@ -12,6 +12,8 @@ module PetHealthDiary
     config.load_defaults 7.0
     config.time_zone = 'Tokyo'
     config.active_storage.variant_processor = :mini_magick
+    # 日本語の言語設定
+    config.i18n.default_locale = :ja
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

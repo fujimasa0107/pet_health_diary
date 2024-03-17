@@ -93,3 +93,5 @@ end
 #画像加工ツールgem
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+#日本語に対応gem
+gem 'rails-i18n'
