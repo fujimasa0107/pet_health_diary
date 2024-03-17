@@ -18,11 +18,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       sign_in(user) # Userインスタンスを渡す
       redirect_to root_path
     else
-      flash[:user_pet_errors] = @user_pet.errors.full_messages
-      redirect_to new_user_registration_path
+      flash.now[:notice] = "登録に失敗しました"
+      render :new
     end
   end
-
 
   def edit
     user = current_user
@@ -55,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user_pet).permit(:email, :password, :password_confirmation, :name,:pet_name, :pet_age, :pet_weight)
+    params.require(:user_pet).permit(:email, :password, :password_confirmation, :name, :pet_name, :pet_age, :pet_weight)
   end
 
   def account_update_params

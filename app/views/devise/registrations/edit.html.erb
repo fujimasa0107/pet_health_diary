@@ -1,36 +1,42 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="login-page">
+  <div class="form">
+    <h2>アカウント  編集 </h2>
+    
+    <%= form_for(@user_pet, as: :user_pet, url: registration_path(:user), html: { method: :put }) do |f| %>
+      <%= render 'shared/error_messages', model: @user_pet %>
 
-<%= form_for(@user_pet, as: :user_pet, url: registration_path(:user), html: { method: :put }) do |f| %>
-  <%#<%= render "devise/shared/error_messages", resource: resource %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="field">
+          Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+        </div>
+      <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+      <%# Add fields for pet information %>
+      <div class="field">
+        <%= f.label :pet_name %><br />
+        <%= f.text_field :pet_name, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :pet_age %><br />
+        <%= f.number_field :pet_age, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :pet_weight %><br />
+        <%= f.number_field :pet_weight, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Update", class: "form-button" %>
+      </div>
+    <% end %>
+
+    <%= link_to "Back", :back, class: "form-back-link" %>
   </div>
-
-  <%# Add fields for pet information %>
-  <div class="field">
-    <%= f.label :pet_name %><br />
-    <%= f.text_field :pet_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pet_age %><br />
-    <%= f.number_field :pet_age %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pet_weight %><br />
-    <%= f.number_field :pet_weight %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<%= link_to "Back", :back %>
+</div>
